@@ -1,0 +1,1 @@
+# server.json to zowe.yaml converter
