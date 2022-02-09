@@ -10,7 +10,7 @@ const main = async () => {
     return;
   }
   console.log(`converting file ${serverJson}...`);
-  const contents = await fs.promises.readFile(serverJson, 'utf-8');
+  const contents = fs.readFileSync(serverJson, 'utf-8');
   const json: any = jsonc.parse(contents, undefined, true);
   const agent = json.agent || {};
   json.agent = undefined;
@@ -23,7 +23,7 @@ const main = async () => {
   const zoweDotYamlFile = path.join(path.dirname(serverJson), 'zowe.yaml');
   const zoweYamlData = YAML.stringify(zoweDotYaml);
   console.log(`creating ${zoweDotYamlFile}`);
-  await fs.promises.writeFile(zoweDotYamlFile, zoweYamlData);
+  fs.writeFileSync(zoweDotYamlFile, zoweYamlData);
   console.log('done');
 }
 
